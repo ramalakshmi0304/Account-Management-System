@@ -16,10 +16,14 @@ try{
 const{data:sender,error}=await supabase
 .from("transactions")
 .select("*")
+.eq(sender_id, senderId)
+.single();
 
+if(error){
+    return res.status(400).json("sender not found")
 
-
-
+    
+}
 
 
 }catch(error){
